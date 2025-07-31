@@ -32,7 +32,7 @@ jobs:
         run: npm run test:coverage
 
   docker-build-and-push:
-    #needs: build-and-test
+    needs: build-and-test
     runs-on: ubuntu-latest
     if: github.ref == 'refs/heads/main'
     steps:
@@ -51,7 +51,7 @@ jobs:
           docker push obione94/api_gateaway_backend_cqrs:latest
           
   deploy:       # 🚀 Déploiement
-    #needs: docker-build-and-push
+    needs: docker-build-and-push
     runs-on: ubuntu-latest
     if: github.ref == 'refs/heads/main'
     steps:
