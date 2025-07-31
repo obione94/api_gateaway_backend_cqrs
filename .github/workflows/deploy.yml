@@ -7,9 +7,6 @@ on:
 jobs:
   build-and-test:
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        service: [api_gateaway_backend_cqrs]
 
     steps:
       - name: Checkout repository
@@ -50,7 +47,7 @@ jobs:
 
       - name: Build and push api_gateaway_backend_cqrs Docker image
         run: |
-          docker build -t mydockerhubuser/api_gateaway_backend_cqrs:latest ./api_gateaway_backend_cqrs
+          docker build -t mydockerhubuser/api_gateaway_backend_cqrs:latest ./
           docker push mydockerhubuser/api_gateaway_backend_cqrs:latest
 
   deploy:
