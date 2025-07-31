@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        service: [api_gateaway]
+        service: [api_gateaway_backend_cqrs]
 
     steps:
       - name: Checkout repository
@@ -24,7 +24,7 @@ jobs:
         uses: actions/cache@v3
         with:
           path: ./node_modules
-          key: ${{ runner.os }}-npm-${{ hashFiles(format('{0}/package-lock.json', matrix.service)) }}
+          key: ${{ runner.os }}-npm-${{ hashFiles('**/package-lock.json') }}
           restore-keys: |
             ${{ runner.os }}-npm-
 
@@ -48,10 +48,10 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
-      - name: Build and push api_gateaway Docker image
+      - name: Build and push api_gateaway_backend_cqrs Docker image
         run: |
-          docker build -t mydockerhubuser/api_gateaway:latest
-          docker push mydockerhubuser/api_gateaway:latest
+          docker build -t mydockerhubuser/api_gateaway_backend_cqrs:latest
+          docker push mydockerhubuser/api_gateaway_backend_cqrs:latest
 
   deploy:
     needs: docker-build-and-push
