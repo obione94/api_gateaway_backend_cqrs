@@ -48,8 +48,6 @@ jobs:
       - name: Build and push Docker image
         run: |
           docker build -t obione94/api_gateaway_backend_cqrs:latest .
-          pwd
-          ls -la
           docker push obione94/api_gateaway_backend_cqrs:latest
           
   deploy:       # 🚀 Déploiement
