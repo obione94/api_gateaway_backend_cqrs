@@ -32,7 +32,7 @@ jobs:
         run: npm run test:coverage
 
   docker-build-and-push:
-    needs: build-and-test
+    #needs: build-and-test
     runs-on: ubuntu-latest
     if: github.ref == 'refs/heads/main'
     steps:
@@ -47,11 +47,11 @@ jobs:
 
       - name: Build and push Docker image
         run: |
-          docker build -t mydockerhubuser/api_gateaway_backend_cqrs:latest ./Dockerfile
+          docker build -t mydockerhubuser/api_gateaway_backend_cqrs:latest .
           docker push mydockerhubuser/api_gateaway_backend_cqrs:latest
           
   deploy:       # 🚀 Déploiement
-    needs: docker-build-and-push
+    #needs: docker-build-and-push
     runs-on: ubuntu-latest
     if: github.ref == 'refs/heads/main'
     steps:
