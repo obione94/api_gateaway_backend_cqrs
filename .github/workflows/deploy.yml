@@ -50,7 +50,7 @@ jobs:
 
       - name: Build and push api_gateaway Docker image
         run: |
-          docker build -t mydockerhubuser/api_gateaway:latest ./
+          docker build -t mydockerhubuser/api_gateaway:latest
           docker push mydockerhubuser/api_gateaway:latest
 
   deploy:
