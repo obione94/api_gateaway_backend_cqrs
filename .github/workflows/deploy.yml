@@ -23,17 +23,17 @@ jobs:
       - name: Cache node modules for ${{ matrix.service }}
         uses: actions/cache@v3
         with:
-          path: ${{ matrix.service }}/node_modules
+          path: ./node_modules
           key: ${{ runner.os }}-npm-${{ hashFiles(format('{0}/package-lock.json', matrix.service)) }}
           restore-keys: |
             ${{ runner.os }}-npm-
 
       - name: Install dependencies for ${{ matrix.service }}
-        working-directory: ${{ matrix.service }}
+        working-directory: .
         run: npm install
 
       - name: Run tests with coverage for ${{ matrix.service }}
-        working-directory: ${{ matrix.service }}
+        working-directory: .
         run: npm run test:coverage
 
   docker-build-and-push:
