@@ -20,13 +20,14 @@ jobs:
       - name: Cache node modules
         uses: actions/cache@v3
         with:
-          path: ./node_modules
+          path: node_modules
           key: ${{ runner.os }}-npm-${{ hashFiles('package-lock.json') }}
           restore-keys: |
             ${{ runner.os }}-npm-
 
       - name: Install dependencies
         run: npm install
+        working-directory: api_gateaway_backend_cqrs
 
       - name: Run tests with coverage
         run: npm run test:coverage
@@ -47,9 +48,8 @@ jobs:
 
       - name: Build and push Docker image
         run: |
-          docker build -t mydockerhubuser/api_gateaway_backend_cqrs:latest .
-          docker push mydockerhubuser/api_gateaway_backend_cqrs:latest
-
+          docker build -t mydockerhubuser/api_gateaway_backend_cqrs:latest ./api_gateaway_backend_cqrs
+          docker push mydockerhubuser/api_gateaway_backend_cqrs:lates
   deploy:       # 🚀 Déploiement
     needs: docker-build-and-push
     runs-on: ubuntu-latest
