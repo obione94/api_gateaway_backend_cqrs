@@ -1,8 +1,8 @@
 FROM node:24-alpine
-COPY package*.json ./
+WORKDIR /app/data
+ADD . /app/
+#COPY package*.json ./
 RUN npm install --production
-RUN chown www-data:www-data .
-COPY . .
-RUN chmod +x /usr/local/bin/entrypoint.sh
+#COPY . .
 EXPOSE 3000
 CMD ["node", "index.js"]
