@@ -1,0 +1,26 @@
+name: Test, Coverage and Deploy backend Api_gateaway
+
+on:
+  push:
+    branches: [main] # ou "master" si c'est ta branche par défaut
+
+jobs:
+  test-and-deploy:
+    runs-on: node:24-alpine
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run tests with coverage ✅
+        run: jest --coverage --silent --detectOpenHandles
+
+      # 🚀 Déploiement
+      - name: Deploy app and coverage to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: .
