@@ -47,7 +47,7 @@ jobs:
 
       - name: Build and push api_gateaway_backend_cqrs Docker image
         run: |
-          docker build -t mydockerhubuser/api_gateaway_backend_cqrs:latest ./
+          docker build -t mydockerhubuser/api_gateaway_backend_cqrs:latest .
           docker push mydockerhubuser/api_gateaway_backend_cqrs:latest
 
   deploy:
