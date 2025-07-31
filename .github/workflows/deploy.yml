@@ -49,6 +49,7 @@ jobs:
         run: |
           docker build -t mydockerhubuser/api_gateaway_backend_cqrs:latest .
           pwd
+          ls -la
           docker push mydockerhubuser/api_gateaway_backend_cqrs:latest
           
   deploy:       # 🚀 Déploiement
