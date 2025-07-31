@@ -7,6 +7,9 @@ on:
 jobs:
   build-and-test:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        service: [api_gateaway]
 
     steps:
       - name: Checkout repository
@@ -21,7 +24,7 @@ jobs:
         uses: actions/cache@v3
         with:
           path: ./node_modules
-          key: ${{ runner.os }}-npm-${{ hashFiles(format('{0}/package-lock.json', 'v2')) }}
+          key: ${{ runner.os }}-npm-${{ hashFiles(format('{0}/package-lock.json', matrix.service)) }}
           restore-keys: |
             ${{ runner.os }}-npm-
 
