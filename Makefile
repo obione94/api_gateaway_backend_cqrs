@@ -1,15 +1,18 @@
 # Variables
 COMPOSE_FILE=docker-compose.yml
 
-.PHONY: start start-prod stop restart logs clean
+.PHONY: build dev start stop restart logs clean test container test-coverage clean-dist docker-hub-run
+
+# Build TypeScript en local
+build:
+	npm run build
 
 # Démarrer les services via docker-compose
+dev:
+	docker-compose up -d --build
+
+# Lancer le projet en production (Docker compose production)
 start:
-	docker-compose -f $(COMPOSE_FILE) up -d --build
-
-
-# Démarrer les services via docker-compose pour la production
-start-prod:
 	docker-compose -f docker-compose.yml -f docker-compose.prod.yml up -d
 
 # Arrêter les services
@@ -21,7 +24,7 @@ restart: stop start
 
 # Afficher les logs des deux services
 logs:
-	docker-compose -f $(COMPOSE_FILE) logs -f
+	docker logs -f $$(docker-compose ps -q $(APP_NAME))
 
 # Nettoyer les images (optionnel)
 clean:
@@ -45,3 +48,7 @@ docker-hub-run:
 
 container:
 	 docker exec -it api_gateaway sh
+
+# Nettoyer les fichiers de build locaux
+clean-dist:
+	rm -rf dist

@@ -1,6 +1,8 @@
 version: "3.8"
 services:
   api_gateaway:
+    env_file:
+      - .env
     environment:
       - NODE_ENV=production
     volumes: []  # Pas de montage - code dans l'image seule
