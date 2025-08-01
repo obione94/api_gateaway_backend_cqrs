@@ -1,0 +1,6 @@
+{
+  "watch": ["app"],
+  "ext": "js,json",
+  "ignore": ["node_modules","db"],
+  "delay": "1500"
+}

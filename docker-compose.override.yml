@@ -1,0 +1,11 @@
+version: "3.8"
+services:
+  api_gateaway:
+    environment:
+      - NODE_ENV=development
+    volumes:
+      - ./app:/app # Monte le code local dans le conteneur
+      - /app/node_modules
+    command: node app/index.js # Lancer nodemon pour hot reload
+    ports:
+      - "3000:3000"

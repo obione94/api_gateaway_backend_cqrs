@@ -1,0 +1,16 @@
+version: "3.8"
+
+services:
+  api_gateaway:
+    build: .
+    #image: obione94/api_gateaway_backend_cqrs:${TAG:-latest}
+    container_name: api_gateaway
+    volumes:
+      - ./app:/app # Monte le code local dans le conteneur
+      - /app/node_modules
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=development
+      - PORT=3000
+    restart: always
