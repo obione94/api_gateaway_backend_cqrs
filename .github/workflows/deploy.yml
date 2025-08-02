@@ -31,6 +31,9 @@ jobs:
       - name: Run tests with coverage
         run: npm run test:coverage
 
+      - name: build
+        run: npm run build
+
   docker-build-and-push:
     needs: build-and-test
     runs-on: ubuntu-latest

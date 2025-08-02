@@ -2,7 +2,7 @@
 
 # Variables
 IMAGE="obione94/api_gateaway_backend_cqrs:latest"
-CONTAINER_NAME="api_gateaway_backend_cqrs"
+CONTAINER_NAME="api_gateaway"
 PORT_LOCAL=3000      # port sur ton serveur
 PORT_INTERNE=3000    # port exposé par ton image
 
