@@ -21,4 +21,5 @@ COPY tsconfig.json ./
 EXPOSE 3000
 
 # CMD par défaut : mode production (après build TS)
-CMD ["node", "dist/index.js"]
+#CMD ["node", "dist/index.js"]
+CMD ["node", "src/index.ts"]
