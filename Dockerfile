@@ -17,8 +17,10 @@ COPY ./src ./src
 # Copier tsconfig.json pour la compilation TS
 COPY tsconfig.json ./
 
+# Étape manquante : compiler le TS
+RUN npm run build
+
 EXPOSE 3000
 
 # CMD par défaut : mode production (après build TS)
-#CMD ["node", "dist/index.js"]
-CMD ["node", "src/index.ts"]
+CMD ["node", "dist/index.js"]

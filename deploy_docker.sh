@@ -3,7 +3,7 @@
 # Variables
 USERNAME="obione94"
 PASSWORD="xxxx"  # Remplace par ton vrai mot de passe ou token
-IMAGE_NAME="api_gateaway_backend_cqrs"
+IMAGE_NAME="api_gateaway"
 TAG="latest"
 FULL_IMAGE="$USERNAME/$IMAGE_NAME:$TAG"
 
