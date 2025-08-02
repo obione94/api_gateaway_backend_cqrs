@@ -10,7 +10,6 @@ COPY package.json package-lock.json ./
 
 # Installer toutes les dépendances (dev + prod)
 RUN npm install
-RUN npm run build
 
 # Copier le code source TS
 COPY ./src ./src
