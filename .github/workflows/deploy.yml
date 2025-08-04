@@ -45,7 +45,7 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git switch --create release || git switch release
-          cp . ./
+          cp -r . ./
           git add .
           git commit -m "release from $(date +'%Y-%m-%d %H:%M:%S')" || echo "Nothing to commit"
           git push origin release
