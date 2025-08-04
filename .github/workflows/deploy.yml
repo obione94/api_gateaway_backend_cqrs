@@ -60,9 +60,6 @@ jobs:
       - name: run migrate
         run: npm run migrate:add-users
 
-      - name: Install dependencies
-        run: npm install --production
-
       - name: build
         run: npm run build
 
