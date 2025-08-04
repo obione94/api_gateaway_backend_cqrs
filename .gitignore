@@ -3,6 +3,7 @@ node_modules
 coverage
 # Ignorer le dossier de build TypeScript (dist) car on reconstruit dans l'image
 dist
+db/*
 
 # Ignorer logs
 npm-debug.log*
@@ -16,3 +17,4 @@ yarn-error.log*
 
 # Ignorer fichiers temporaires
 *.swp
+q
