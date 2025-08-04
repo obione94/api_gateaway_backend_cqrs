@@ -17,4 +17,3 @@ yarn-error.log*
 
 # Ignorer fichiers temporaires
 *.swp
-q
