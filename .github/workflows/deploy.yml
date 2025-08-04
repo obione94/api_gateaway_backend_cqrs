@@ -39,6 +39,12 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
+      - name: to release branch
+        uses: peaceiris/actions-release@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./
+
         # 🚀 Déploiement combiné
 
       - name: Setup Node.js
